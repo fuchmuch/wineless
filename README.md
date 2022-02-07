@@ -13,7 +13,7 @@
 
 ### ***Screenshots***
 
-![Alt Text](https://i.imgur.com/qnen2dK.jpg)
+![Alt Text](https://i.imgur.com/7XPkLxF.png)
 
 (As a reference of a wine web)
 
