@@ -5,20 +5,28 @@ import axios from "axios";
 //
 export default function Home(props) {
     // let history = useHistory();
-    const [places, setPlaces] = useState([]);
+    const [stores, setStores] = useState([]);
     const [locations, setLocations] = useState([]);
+    const [users, setUsers] = useState([]);
     const [isLoggedIn, setLoggedIn] = useState(false);
 
 
     useEffect(() => {
         getStores();
         getLocations();
-        getThirdpartyAPi();
+        getUsers();
+        // getThirdpartyAPi();
     }, []);
+
+    const getUsers = async () => {
+        const res = await axios.get(`http://localhost:8000/users`);
+        console.log(res.data)
+        setUsers(res.data);
+    };
 
     const getStores = async () => {
         const res = await axios.get(`http://localhost:8000/stores`);
-        setPlaces(res.data.places);
+        setStores(res.data.stores);
     };
 
     const getLocations = async () => {
@@ -26,25 +34,30 @@ export default function Home(props) {
         setLocations(res.data.locations);
     };
 
-    const getThirdpartyAPi = async () => {
+    // const getThirdpartyAPi = async () => {
 
-        const options = {
-            method: 'GET',
-            url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
-            params: { i: 'Gin' },
-            headers: {
-                'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
-                'x-rapidapi-key': '8ed94299d9mshd53a990809aa677p1aa9c5jsndfd4dbcda52c'
-            }
-        };
+    //     const options = {
+    //         method: 'GET',
+    //         url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
+    //         params: { i: 'Gin' },
+    //         headers: {
+    //             'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
+    //             'x-rapidapi-key': '8ed94299d9mshd53a990809aa677p1aa9c5jsndfd4dbcda52c'
+    //         }
+    //     };
 
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-        }).catch(function (error) {
-            console.error(error);
-        });
+    //     axios.request(options).then(function (response) {
+    //         console.log(response.data);
+    //     }).catch(function (error) {
+    //         console.error(error);
+    //     });
 
         // setStores(res.data.Stores);
-    };
-}
+  
+    return (
+        <div>
+            <h1>hello</h1>
+        </div>
+    )
 
+};
