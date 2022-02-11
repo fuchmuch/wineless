@@ -9,19 +9,3 @@ export const DELETE_USER = 'DELETE_USER'
 export const UPDATE_USER = 'UPDATE_USER'
 
 
-const SearchResults= (props) => {
-
-    return (
-        <div className='searchdiv'>
-          <input
-            type="text"
-            name="Search"
-            value={props.value}
-            placeholder="Search Restaurants"
-            onChange={props.onChange}
-          ></input>
-          <button className='searchbtn' type="submit">Search</button>
-        </div>
-      )
-    
-}
