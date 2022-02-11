@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import NavBar from './NavBar'; 
 
 //state stores in array 
 //
@@ -52,11 +53,23 @@ export default function Home(props) {
     //         console.error(error);
     //     });
 
-        // setStores(res.data.Stores);
-  
+    // setStores(res.data.Stores);
+
     return (
         <div>
+            <NavBar/>
             <h1>hello</h1>
+            <ul>
+        {users.map((user)=> {
+            return(
+            <li>
+                <p>{user.first_name}</p>
+                <p>{user.last_name}</p>
+                <p><img src={user.photo_url}/></p>
+            </li>
+            )
+        }) }
+            </ul>
         </div>
     )
 
