@@ -68,8 +68,8 @@ const Profile = (props) => {
                         Location: {props.userState.user.location}
                     </div>
                     <div>
-                        <h4>Saved Bills:</h4>
-                            {props.userState.user.Bills.map((e) => (
+                        <h4>Saved Stores:</h4>
+                            {props.userState.user.Stores.map((e) => (
                                 <li key={e.id} className="bills">
                                     {e.title}
                                     <a href={`${e.url}`} target='_blank' rel="noreferrer"> ...Details</a>

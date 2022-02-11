@@ -31,68 +31,29 @@ const mapStateToProps = (state) => {
 
 function App(props) {
 
-  const history = useHistory()
+//   const history = useHistory()
 
-  const handleChange = (e) => {
-    props.newUser({[e.target.name]: e.target.value})
-  }
+//   const handleChange = (e) => {
+//     props.newUser({[e.target.name]: e.target.value})
+//   }
 
-  const handleLogIn = (e) => {
-    e.preventDefault()
-    props.logIn()
-    props.getUser()
-  }
+//   const handleLogIn = (e) => {
+//     e.preventDefault()
+//     props.logIn()
+//     props.getUser()
+//   }
 
-  const handleSignUp = (e) => {
-    e.preventDefault()
-    history.push('/')
-    props.takeNewUser(props.userState.newUser)
-  }
+//   const handleSignUp = (e) => {
+//     e.preventDefault()
+//     history.push('/')
+//     props.takeNewUser(props.userState.newUser)
+//   }
 
-
-  return (
-
-    <div className='body'>
-      {props.userState.isLoggedin === true ?       
-      <div>
-        <div>
-          {/* <NavBar />
-        </div>
-        <div className='app-body'>
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/stores/:id' component={Details}/>
-            <Route path='/stores' component={Stores}/>
-            <Route path='/profile' component={Profile}/>
-          </Switch>
-        </div>
-      </div> 
-      
-      : 
-      
-      <div id="sign-page">
-        <Switch>
-          <Route exact path='/' >
-            <SignIn 
-              handleLogIn={handleLogIn}
-            />
-          </Route>
-          <Route path='/sign-up'>
-            <SignUp
-              email={props.userState.newUser.email}
-              userName={props.userState.newUser.name}
-              handleChange={handleChange}
-              handleSignUp={handleSignUp}
-              
-            />          
-          </Route>
-        </Switch>
-      </div>}
-      <div id='footer'>
-        <h6>''</h6>
-      </div>
-    </div>
-  );
+return (
+  <div> 
+  <Home/> 
+  </div>
+)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App) */
+export default App
