@@ -6,8 +6,9 @@ const NavBar = () => {
         <Router>
       <div >
           <nav className="nav-bar">
-            <Link to='/' id="nav-e"> Where to Buy discounted liquors </Link>
-            <Link to='/stores' id="nav-e"> Stores </Link>
+            <Link to='/Home' id="nav-e">  </Link>
+            <Link to='/Stores' id="nav-e"> Stores </Link>
+            <Link to='/Users' id="nav-e"> Users </Link>
            
           </nav>
           
