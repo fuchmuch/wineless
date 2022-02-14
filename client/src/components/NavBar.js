@@ -8,14 +8,15 @@ const NavBar = () => {
         <Router>
       <div >
           <nav className="nav-bar">
+              
             <Link to='./Home' id="nav">  </Link>
-            <button>
+            <button className="button1"> 
             <Link to='./Stores' id="nav"> Stores </Link>
             </button>
-            <button>
+            <button className="button2">
             <Link to='./Users' id="nav"> Users </Link>
             </button>
-            <button>
+            <button className="button3">
             <Link to='./Login' id="nav"> Login </Link>
             </button>
           </nav>
