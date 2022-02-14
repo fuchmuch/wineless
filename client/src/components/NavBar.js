@@ -9,9 +9,15 @@ const NavBar = () => {
       <div >
           <nav className="nav-bar">
             <Link to='./Home' id="nav">  </Link>
+            <button>
             <Link to='./Stores' id="nav"> Stores </Link>
+            </button>
+            <button>
             <Link to='./Users' id="nav"> Users </Link>
-           
+            </button>
+            <button>
+            <Link to='./Login' id="nav"> Login </Link>
+            </button>
           </nav>
           
       </div>

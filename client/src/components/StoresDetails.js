@@ -35,7 +35,7 @@ export default function StoreDetails() {
 
 
   const getStore = async () => {
-    console.log('this is get place function>>>>',id)
+    console.log('this is get store function>>>>',id)
     const res = await axios.get(
       `http://localhost:8000/stores/${id}`
     );

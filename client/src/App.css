@@ -16,6 +16,13 @@
  
 }
 
+.nav-bar{
+ padding: 30px;
+  align-items: center;
+ font-size:50px;
+ margin-left: 10px;
+}
+
 .profile{
   display: grid;
 
