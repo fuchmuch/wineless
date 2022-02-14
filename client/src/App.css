@@ -19,8 +19,12 @@
   display: grid;
 
 }
-.store-section{
-
+.imagetitle{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: top;
+  padding-left: 180px;
 }
 
 p{

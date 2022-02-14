@@ -8,9 +8,9 @@ const NavBar = () => {
         <Router>
       <div >
           <nav className="nav-bar">
-            <Link to='/Home' id="nav-e">  </Link>
-            <Link to='/Stores' id="nav-e"> Stores </Link>
-            <Link to='/Users' id="nav-e"> Users </Link>
+            <Link to='./Home' id="nav">  </Link>
+            <Link to='./Stores' id="nav"> Stores </Link>
+            <Link to='./Users' id="nav"> Users </Link>
            
           </nav>
           
