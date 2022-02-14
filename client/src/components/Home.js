@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import NavBar from './NavBar';
-import Stores from './Stores';
+import StoreDetails from './StoresDetails';
 
 //state stores in array 
 //
-export default function Home(props) {
-    // let history = useHistory();
+export default function StoresDetails() {
+
     const [stores, setStores] = useState([]);
     const [locations, setLocations] = useState([]);
     const [users, setUsers] = useState([]);
-    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [id, setId]= useState('')
 
+   
 
     useEffect(() => {
         getStores();
         getLocations();
         getUsers();
-        // getThirdpartyAPi();
+        // getThirdpartyAPI();
     }, []);
+
 
     const getUsers = async () => {
         const res = await axios.get(`http://localhost:8000/users`);
