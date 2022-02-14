@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import NavBar from './NavBar'; 
+import NavBar from './NavBar';
+import Stores from './Stores';
 
 //state stores in array 
 //
@@ -27,11 +28,13 @@ export default function Home(props) {
 
     const getStores = async () => {
         const res = await axios.get(`http://localhost:8000/stores`);
-        setStores(res.data.stores);
+        console.log(res.data)
+        setStores(res.data);
     };
 
     const getLocations = async () => {
         const res = await axios.get(`http://localhost:8000/locations`);
+        console.log(res.data)
         setLocations(res.data.locations);
     };
 
@@ -57,19 +60,42 @@ export default function Home(props) {
 
     return (
         <div>
-            <NavBar/>
-            <h1>hello</h1>
+            <NavBar />
+            <h1>Users list</h1>
             <ul>
-        {users.map((user)=> {
-            return(
-            <li>
-                <p>{user.first_name}</p>
-                <p>{user.last_name}</p>
-                <p><img src={user.photo_url}/></p>
-            </li>
-            )
-        }) }
+                {users.map((user) => {
+                    return (
+                        <li>
+                            <p className='firstname'>{user.first_name}</p>
+                            <p className='lastname'>{user.last_name}</p>
+                            <p className='profile'><img src={user.photo_url} width="300" height="200"  /></p>
+                        </li>
+                    )
+                })}
             </ul>
+            
+            <section className="stores-Section">
+                {/* <Stores/> */}
+                <ul>
+                {stores.map((store) => {
+                    return (
+                        <div>
+                    <li>
+                        <p>{store.name}</p>
+                        <p>{store.location}</p>
+                        <p>{store.address}</p>
+                        <p ><img src={store.photo_url} width="250" height="400" className='store-image'/></p>
+                        <p>{store.description}</p>
+                        <p>{store.price}</p>
+                        <p>{store.type}</p>
+                    </li>
+                    </div>
+                    )
+                        })}
+                        </ul>
+
+            </section>
+
         </div>
     )
 

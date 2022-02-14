@@ -1,41 +1,83 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { LoadStoreById } from "../store/actions/StoreAction";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 
-const mapDispatchToProps = (dispath) => {
-    return {
-        fetchDetails: (store) => dispath(LoadStoreById(store))
+
+// import { Rating } from 'react-simple-star-rating';
+
+
+export default function StoreDetails() {
+  const [selectedStore, setSelectedStore] = useState(null);
+  const [stores, setStores] = useState([]);
+  const [id, setId]= useState('')
+
+  
+  let { name } = useParams()
+ 
+
+
+  const getId = (stores) =>{
+  for (let i = 0; i < stores.length; i++) {
+    const s = stores[i];
+  let convertedName = s.name.split(" ").join('-').toLowerCase()
+    if (name ===convertedName){
+      console.log('sucsess')
+      setId(s._id)      
     }
-}
-const mapStateToProps = ( store ) => {
-    return { storeState: state.storeState }
-}
+  }
+  }
+  const getStores = async () => {
+    const res = await axios.get(`http://localhost:8000/stores`);
+    setStores(res.data);
+    getId(res.data)
+  };
 
-const Details = (props) => {
 
-    const { id } = useParams()
-    const congress = id.substring(0, id.indexOf('-'))
+  const getStore = async () => {
+    console.log('this is get place function>>>>',id)
+    const res = await axios.get(
+      `http://localhost:8000/stores/${id}`
+    );
+    setSelectedStore(res.data);
+  };
 
-    useEffect(() => {
-        props.fetchDetails(store)
-    }, [store])
+  const deleteStores = async (storeId) => {
+    console.log(`this is line 35 ${storeId}`);
+    const res = await axios.delete(`http://localhost:8000/stores/${storeId}`);
+    deleteStores(res.data)
+  };
 
-    return (
-        <div>
-            { props.storeState.isLoading ? <p> loading </p> : <div> {props.storeState.store.map( (e) => (
-                <div key={e.store_id}>
-                    {e.title}
-                    <a href={`${e.store_url}`} target={`_blank`} rel="noreferred"> <span className="span-details">more details</span> </a>
-                </div>
-            ))} </div>}
+  useEffect(() => {
+    getStores();
+    return () => {}
+  }, [])
+
+  useEffect(() => {
+    if(id) getStore()
+    return () => {}
+  }, [id])
+  
+  return selectedStore ? (
+    <div>
+
+        <div className='imagetitle'>  
+        <h1>{selectedStore.name}</h1>
+        <img src={selectedStore.photo_url} />
+        </div>   
+  
+
+      <section className="store-info">
+        <div className= 'pcontainer'>
+        <p className='p1'>{selectedStore.address}</p>
+        <p className='p2'>{selectedStore.type}</p>
+        <p className='p4'>{selectedStore.description}</p>
+     
         </div>
-    )
+      </section>
+   
+        
+      )
+    </div>
+  ) : null;
 }
-
-
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
