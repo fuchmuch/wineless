@@ -8,25 +8,24 @@ import { useParams } from 'react-router-dom';
 
 
 export default function StoreDetails() {
-  const [selectedStore, setSelectedStore] = useState(null);
+  const [store, setSelectedStore] = useState(null);
   const [stores, setStores] = useState([]);
-  const [id, setId]= useState('')
+  const [id, setId] = useState('')
 
-  
   let { name } = useParams()
- 
 
 
-  const getId = (stores) =>{
-  for (let i = 0; i < stores.length; i++) {
-    const s = stores[i];
-  let convertedName = s.name.split(" ").join('-').toLowerCase()
-    if (name ===convertedName){
-      console.log('sucsess')
-      setId(s._id)      
+  const getId = (stores) => {
+    for (let i = 0; i < stores.length; i++) {
+      const s = stores[i];
+      let convertedName = s.name.split(" ").join('-').toLowerCase()
+      if (name === convertedName) {
+        console.log('sucsess')
+        setId(s._id)
+      }
     }
   }
-  }
+
   const getStores = async () => {
     const res = await axios.get(`http://localhost:8000/stores`);
     setStores(res.data);
@@ -35,7 +34,7 @@ export default function StoreDetails() {
 
 
   const getStore = async () => {
-    console.log('this is get store function>>>>',id)
+    console.log('this is get store function>>>>', id)
     const res = await axios.get(
       `http://localhost:8000/stores/${id}`
     );
@@ -50,34 +49,51 @@ export default function StoreDetails() {
 
   useEffect(() => {
     getStores();
-    return () => {}
+    return () => { }
   }, [])
 
   useEffect(() => {
-    if(id) getStore()
-    return () => {}
+    if (id) getStore()
+    return () => { }
   }, [id])
-  
-  return selectedStore ? (
-    <div>
 
-        <div className='imagetitle'>  
-        <h1>{selectedStore.name}</h1>
-        <img src={selectedStore.photo_url} />
-        </div>   
-  
 
-      <section className="store-info">
-        <div className= 'pcontainer'>
-        <p className='p1'>{selectedStore.address}</p>
-        <p className='p2'>{selectedStore.type}</p>
-        <p className='p4'>{selectedStore.description}</p>
-     
+  if (!stores.length) return <div>Loading..</div>
+  return <div>
+    {stores.map(store => {
+      return <div>
+        <div>
+          <h1>{store.name}</h1>
+          <img src={store.photo_url} />
         </div>
-      </section>
-   
-        
-      )
-    </div>
-  ) : null;
+
+        <section className="store-info">
+          <div className='pcontainer'>
+            <p className='p1'>{store.address}</p>
+            <p className='p2'>{store.type}</p>
+            <p className='p4'>{store.description}</p>
+          </div>
+        </section>
+      </div>
+    })}
+  </div>
+
+  // return {stores.map((store) => {
+  // <div>
+  //   <div className='imagetitle'>
+  //     <h1>{store.name}</h1>
+  //     <img src={store.photo_url} />
+  //   </div>
+
+
+  //   <section className="store-info">
+  //     <div className='pcontainer'>
+  //       <p className='p1'>{store.address}</p>
+  //       <p className='p2'>{store.type}</p>
+  //       <p className='p4'>{store.description}</p>
+
+  //     </div>
+  //   </section>
+  // })}
+  // </div>
 }

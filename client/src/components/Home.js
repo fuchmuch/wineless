@@ -10,9 +10,9 @@ export default function StoresDetails() {
     const [stores, setStores] = useState([]);
     const [locations, setLocations] = useState([]);
     const [users, setUsers] = useState([]);
-    const [id, setId]= useState('')
+    const [id, setId] = useState('')
 
-   
+
 
     useEffect(() => {
         getStores();
@@ -70,31 +70,31 @@ export default function StoresDetails() {
                         <li>
                             <p className='firstname'>{user.first_name}</p>
                             <p className='lastname'>{user.last_name}</p>
-                            <p className='profile'><img src={user.photo_url} width="300" height="200"  /></p>
+                            <p className='profile'><img src={user.photo_url} width="300" height="200" /></p>
                         </li>
                     )
                 })}
             </ul>
-            
+            <div>asdf</div>
             <section className="stores-Section">
                 {/* <Stores/> */}
                 <ul>
-                {stores.map((store) => {
-                    return (
-                        <div>
-                    <li>
-                        <p>{store.name}</p>
-                        <p>{store.location}</p>
-                        <p>{store.address}</p>
-                        <p ><img src={store.photo_url} width="250" height="400" className='store-image'/></p>
-                        <p>{store.description}</p>
-                        <p>{store.price}</p>
-                        <p>{store.type}</p>
-                    </li>
-                    </div>
-                    )
-                        })}
-                        </ul>
+                    {/* {stores.map((store) => {
+                        return (
+                            <div>
+                                <li>
+                                    <p>{store.name}</p>
+                                    <p>{store.location}</p>
+                                    <p>{store.address}</p>
+                                    <p ><img src={store.photo_url} width="250" height="400" className='store-image' /></p>
+                                    <p>{store.description}</p>
+                                    <p>{store.price}</p>
+                                    <p>{store.type}</p>
+                                </li>
+                            </div>
+                        )
+                    })} */}
+                </ul>
 
             </section>
 

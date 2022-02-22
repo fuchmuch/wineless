@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 
 
-const SignIn = (props) => {
-  
+const Login = (props) => {
+
     return (
         <div id='sign-page-s'>
             <div id='sign-page-s'>
@@ -14,16 +14,16 @@ const SignIn = (props) => {
                 <form id='sign-page-s'>
                     <div id='sign-page-s'>
                         <input
-                        type='text'
-                        placeholder='Email'
-                        id='sign-input'
+                            type='text'
+                            placeholder='Email'
+                            id='sign-input'
                         />
                     </div>
                     <div id='sign-page-s'>
-                        <input 
-                        type='text'
-                        placeholder='Username'
-                        id='sign-input'
+                        <input
+                            type='text'
+                            placeholder='Username'
+                            id='sign-input'
                         />
                     </div>
                     <button onClick={props.handleLogIn}> Submit </button>
@@ -37,4 +37,4 @@ const SignIn = (props) => {
 }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
-export default SignIn
+export default Login

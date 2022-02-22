@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route} from 'react-router-dom'
+import { Router, Switch, Route } from 'react-router-dom'
+import Login from './components/Login';
 import Home from './components/Home';
 // import Bill from './components/Stores';
 // import NavBar from './components/NavBar';
@@ -11,6 +12,9 @@ import Home from './components/Home';
 // import { LogIn, LoadUser, SendNewUser, updateNewUser } from './store/actions/UserAction';
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import StoreDetails from './components/StoresDetails';
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
 
 
 
@@ -31,29 +35,44 @@ const mapStateToProps = (state) => {
 
 function App(props) {
 
-//   const history = useHistory()
+  //   const history = useHistory()
 
-//   const handleChange = (e) => {
-//     props.newUser({[e.target.name]: e.target.value})
-//   }
+  //   const handleChange = (e) => {
+  //     props.newUser({[e.target.name]: e.target.value})
+  //   }
 
-//   const handleLogIn = (e) => {
-//     e.preventDefault()
-//     props.logIn()
-//     props.getUser()
-//   }
+  //   const handleLogIn = (e) => {
+  //     e.preventDefault()
+  //     props.logIn()
+  //     props.getUser()
+  //   }
 
-//   const handleSignUp = (e) => {
-//     e.preventDefault()
-//     history.push('/')
-//     props.takeNewUser(props.userState.newUser)
-//   }
+  //   const handleSignUp = (e) => {
+  //     e.preventDefault()
+  //     history.push('/')
+  //     props.takeNewUser(props.userState.newUser)
+  //   }
 
-return (
-  <div> 
-  <Home/> 
-  </div>
-)
+  return (
+    <div>
+
+      <Router history={history}>
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+
+          <Route path="/Stores">
+            <StoreDetails />
+          </Route>
+
+          <Route path="/login">
+            <Login />
+          </Route>
+
+        </Switch>
+      </Router>
+    </div>
+  )
 }
 
 export default App

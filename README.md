@@ -25,8 +25,7 @@
 * Django
 * CSS
 * JavaScript
-* React
-* Redux
+* React and hooks
 * Heroku
 
 
